@@ -3,6 +3,7 @@ import {useGetNewsListQuery} from "@/app/GlobalRedux/News/NewsAction";
 import Loader from "@/app/components/Loader";
 import {useEffect, useState,} from "react";
 import { Select,Input,Pagination } from 'antd';
+import secureLocalStorage from "react-secure-storage";
 export default function Home() {
     const [pageNumber, setPageNumber] = useState(1)
     const [keywordSearch, setKeywordSearch] = useState([]);
@@ -18,7 +19,7 @@ export default function Home() {
       }
       if(isSuccess){
         // console.log('success', data);
-        // console.log('success', Object.values(data?.data?.news?.links));
+        secureLocalStorage.setItem('NewsData', data?.data);
       }
     },[isLoading]);
 
@@ -28,7 +29,7 @@ export default function Home() {
 
     const onPageChange = (event) => {
         setPageNumber(event)
-        console.log(event)
+        // console.log(event)
     };
     const handleKeyWordSearch =(event) =>{
         setKeywordSearch(event.target.value);
@@ -46,7 +47,7 @@ export default function Home() {
                 </div>
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 pt-1">
                     <div className="my-2">
-                        <input className="border h-8 rounded" placeholder="type Key word" defaultValue={keywordSearch} autoFocus={true} onInput={(e)=>handleKeyWordSearch(e)} />
+                        <input className="border h-8 rounded" placeholder="type Key word" defaultValue={keywordSearch}  autoFocus={true} onInput={(e)=>handleKeyWordSearch(e)} />
                     </div>
                     <div className="my-2">
                         <Select
@@ -111,12 +112,8 @@ export default function Home() {
                     )}
                 </div>
                 <div className="flex justify-center items-center my-4">
-                    <Pagination defaultCurrent={1} onChange={onPageChange} showSizeChanger={false} responsive={true} total={data?.data?.news?.total} />
+                    <Pagination defaultCurrent={pageNumber} onChange={onPageChange}  showSizeChanger={false} total={data?.data?.news?.total} />
                 </div>
-
-                {/*<div className="card">*/}
-                {/*    <Paginator first={first} rows={rows} totalRecords={data?.data?.news?.total} onPageChange={onPageChange} />*/}
-                {/*</div>*/}
             </>
         }
     </div>
