@@ -4,6 +4,7 @@ const nextConfig = {
     env: {
         BASE_URL: "http://127.0.0.1:8000/api",
     },
+    output: 'standalone',
 }
 
 module.exports = nextConfig

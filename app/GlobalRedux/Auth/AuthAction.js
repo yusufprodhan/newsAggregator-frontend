@@ -1,3 +1,4 @@
+"use client";
 import * as URL from '../../api/url';
 import {logOut, updateUserData,updateUserFevData} from './AuthSlice';
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';

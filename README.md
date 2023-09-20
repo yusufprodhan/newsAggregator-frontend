@@ -74,7 +74,14 @@ This is an example of how you may give instructions on setting up your project l
  ```sh
    npm install or yarn add
    ```
-3. Run schedule to get news
+
+3. Change backend base url in next.config.js under env block
+ ```sh
+   env: {
+        BASE_URL: "http://127.0.0.1:8000/api",
+    },
+   ```
+4. Run the project
  ```sh
    npm run dev or yarn dev 
    ```
@@ -83,5 +90,6 @@ This is an example of how you may give instructions on setting up your project l
 2. Clone the project repo
 3. Run the command: 
 ```sh
-   make data
+   COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
+   docker run -p 3000:3000 newsAggregatorFrontend
    ```

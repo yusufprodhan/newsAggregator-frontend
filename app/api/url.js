@@ -1,3 +1,4 @@
+"use client";
 //login url
 export const login = '/login';
 //logout url
