@@ -27,6 +27,7 @@ export default function SingUpPage() {
         }
         if(isError){
             toast.error('Please try with proper credential.')
+            setFormProcess(false)
         }
     }, [isLoading]);
     const onFinish = (values) => {
@@ -68,6 +69,7 @@ export default function SingUpPage() {
                         rules={[
                             {
                                 len:6,
+                                max:20,
                                 required: true,
                                 message: 'Please input your password!',
                             },

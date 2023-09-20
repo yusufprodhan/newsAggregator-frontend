@@ -91,5 +91,5 @@ This is an example of how you may give instructions on setting up your project l
 3. Run the command: 
 ```sh
    COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
-   docker run -p 3000:3000 newsAggregatorFrontend
+   docker run -p 3000:3000 news-aggregator-frontend
    ```
